@@ -294,17 +294,26 @@
 			standing += image("icon"='icons/mob/augments.dmi', "icon_state"="[animal_origin]_[body_zone]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
 		return standing
 
+//FEMALE ICONS
+//	var/icon_gender = (body_gender == FEMALE) ? 1 : 0 //gender of the icon, if applicable
 	var/icon_gender = (body_gender == FEMALE) ? "f" : "m" //gender of the icon, if applicable
 
-	if((body_zone != "head" && body_zone != "chest"))
-		should_draw_gender = FALSE
+	if(!owner.dna.species.female_icons)
+		if((body_zone != "head" && body_zone != "chest"))
+			should_draw_gender = FALSE
 
+	var/icon/Icon = null
+	if(owner.IsFemale())
+		Icon = 'icons/mob/human_icons/female.dmi'
+	else
+		Icon = 'icons/mob/human_icons/male.dmi'
 	var/image/I
 
 	if(status == BODYPART_ORGANIC)
 		if(should_draw_greyscale)
 			if(should_draw_gender)
-				I = image("icon"='icons/mob/human_parts_greyscale.dmi', "icon_state"="[species_id]_[body_zone]_[icon_gender]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
+//				I = image("icon"='icons/mob/human_parts_greyscale.dmi', "icon_state"="[species_id]_[body_zone]_[icon_gender]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
+				I = image("icon"=Icon, "icon_state"="[body_zone]", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
 			else if(use_digitigrade)
 				I = image("icon"='icons/mob/human_parts_greyscale.dmi', "icon_state"="digitigrade_[use_digitigrade]_[body_zone]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
 			else
@@ -316,6 +325,7 @@
 				I = image("icon"='icons/mob/human_parts.dmi', "icon_state"="[species_id]_[body_zone]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
 	else
 		if(should_draw_gender)
+//			I = image("icon"=owner.dna.species.Choose_Iconfile(), "icon_state"="[body_zone]", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
 			I = image("icon"='icons/mob/augments.dmi', "icon_state"="[body_zone]_[icon_gender]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
 		else
 			I = image("icon"='icons/mob/augments.dmi', "icon_state"="[body_zone]_s", "layer"=-BODYPARTS_LAYER, "dir"=image_dir)
@@ -391,6 +401,15 @@
 	max_damage = 50
 	animal_origin = LARVA_BODYPART
 
+/obj/item/bodypart/groin
+	icon = 'icons/mob/animal_parts.dmi'
+	icon_state = "groin"
+	icon_state = null
+	dismemberable = 0
+	max_damage = 100
+	body_zone = "groin"
+	body_part = GROIN
+
 /obj/item/bodypart/l_arm
 	name = "left arm"
 	desc = "Did you know that the word 'sinister' stems originally from the \
@@ -426,6 +445,34 @@
 	dismemberable = 0
 	max_damage = 5000
 	animal_origin = DEVIL_BODYPART
+
+/obj/item/bodypart/l_hand
+	name = "left hand"
+	icon_state = "l_hand"
+	max_damage = 50
+	body_zone = "l_hand"
+	body_part = HAND_LEFT
+
+/obj/item/bodypart/r_hand
+	name = "right hand"
+	icon_state = "r_hand"
+	max_damage = 50
+	body_zone = "r_hand"
+	body_part = HAND_RIGHT
+
+/obj/item/bodypart/l_foot
+	name = "left foot"
+	icon_state = "l_foot"
+	max_damage = 50
+	body_zone = "l_foot"
+	body_part = FOOT_LEFT
+
+/obj/item/bodypart/r_foot
+	name = "right foot"
+	icon_state = "r_foot"
+	max_damage = 50
+	body_zone = "r_foot"
+	body_part = FOOT_RIGHT
 
 /obj/item/bodypart/r_arm
 	name = "right arm"

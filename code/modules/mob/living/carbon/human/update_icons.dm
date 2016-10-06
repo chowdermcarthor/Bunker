@@ -123,12 +123,14 @@ There are several things that need to be remembered:
 			t_color = "[t_color]_l"
 
 		var/image/standing
-
+		if(IsFemale() && U.fitted)
+			standing = U.build_worn_icon(state = "[t_color]_s", default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/uniform_f.dmi', isinhands = FALSE, femaleuniform = U.fitted)
+/*
 		if(dna && dna.species.sexes)
 			var/G = (gender == FEMALE) ? "f" : "m"
 			if(G == "f" && U.fitted != NO_FEMALE_UNIFORM)
 				standing = U.build_worn_icon(state = "[t_color]_s", default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/uniform.dmi', isinhands = FALSE, femaleuniform = U.fitted)
-
+*/
 		if(!standing)
 			standing = U.build_worn_icon(state = "[t_color]_s", default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/uniform.dmi', isinhands = FALSE)
 
@@ -191,6 +193,8 @@ There are several things that need to be remembered:
 			t_state = gloves.icon_state
 
 		var/image/standing = gloves.build_worn_icon(state = t_state, default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/hands.dmi')
+		if(IsFemale() && gloves.fitted)
+			standing = gloves.build_worn_icon(state = t_state, default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/hands_f.dmi')
 
 		overlays_standing[GLOVES_LAYER]	= standing
 
@@ -265,6 +269,8 @@ There are several things that need to be remembered:
 				client.screen += shoes					//add it to client's screen
 		update_observer_view(shoes,1)
 		var/image/standing = shoes.build_worn_icon(state = shoes.icon_state, default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/feet.dmi')
+		if(IsFemale() && shoes.fitted)
+			standing = shoes.build_worn_icon(state = shoes.icon_state, default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/feet_f.dmi')
 		overlays_standing[SHOES_LAYER]	= standing
 
 	apply_overlay(SHOES_LAYER)
@@ -312,6 +318,9 @@ There are several things that need to be remembered:
 			t_state = belt.icon_state
 
 		var/image/standing = belt.build_worn_icon(state = t_state, default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt.dmi')
+		if(IsFemale() && belt.fitted)
+			standing = belt.build_worn_icon(state = t_state, default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt_f.dmi')
+
 		overlays_standing[BELT_LAYER] = standing
 
 
@@ -334,6 +343,9 @@ There are several things that need to be remembered:
 		update_observer_view(wear_suit,1)
 
 		var/image/standing = wear_suit.build_worn_icon(state = wear_suit.icon_state, default_layer = SUIT_LAYER, default_icon_file = 'icons/mob/suit.dmi')
+		if(IsFemale() && wear_suit.fitted)
+			standing = wear_suit.build_worn_icon(state = wear_suit.icon_state, default_layer = SUIT_LAYER, default_icon_file = 'icons/mob/suit_f.dmi')
+
 		overlays_standing[SUIT_LAYER]	= standing
 
 		if(wear_suit.breakouttime) //suit is restraining

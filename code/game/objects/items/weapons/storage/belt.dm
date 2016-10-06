@@ -6,6 +6,7 @@
 	item_state = "utility"
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
+	fitted = 1
 
 /obj/item/weapon/storage/belt/update_icon()
 	cut_overlays()

@@ -749,3 +749,9 @@
 	for(var/X in internal_organs)
 		var/obj/item/organ/I = X
 		I.Insert(src)
+
+
+//A simple proc that checks the specie's sex and if the mob is female
+/mob/living/carbon/proc/IsFemale()
+	if(dna.species.sexes && gender == FEMALE)	return 1
+	return 0

@@ -170,7 +170,7 @@ BLIND     // can't see anything
 	var/transfer_prints = FALSE
 	strip_delay = 20
 	put_on_delay = 40
-
+	fitted = 1
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -258,7 +258,7 @@ BLIND     // can't see anything
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	var/chained = 0
-
+	fitted = 1
 	body_parts_covered = FEET
 	slot_flags = SLOT_FEET
 
@@ -301,7 +301,7 @@ BLIND     // can't see anything
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	var/togglename = null
-
+	fitted = 1
 
 /obj/item/clothing/suit/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -362,7 +362,7 @@ BLIND     // can't see anything
 	permeability_coefficient = 0.90
 	slot_flags = SLOT_ICLOTHING
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
-	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
+//	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
 	var/has_sensor = 1//For the crew computer 2 = unable to change mode
 	var/random_sensor = 1
 	var/sensor_mode = 0	/* 1 = Report living/dead, 2 = Report detailed damages, 3 = Report location */
@@ -371,7 +371,7 @@ BLIND     // can't see anything
 	var/alt_covers_chest = 0 // for adjusted/rolled-down jumpsuits, 0 = exposes chest and arms, 1 = exposes arms only
 	var/obj/item/clothing/tie/hastie = null
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
-
+	fitted = 1
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
 

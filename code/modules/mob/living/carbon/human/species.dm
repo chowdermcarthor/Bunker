@@ -56,6 +56,11 @@
 	var/siemens_coeff = 1 //base electrocution coefficient
 	var/damage_overlay_type = "human" //what kind of damage overlays (if any) appear on our species when wounded?
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
+	var/female_icons = 0
+
+	var/icons = list("male" = 'icons/mob/human_icons/male.dmi',"female" = 'icons/mob/human_icons/female.dmi',
+					"male_buff" = 'icons/mob/human_icons/male_buff.dmi',"female_buff" = 'icons/mob/human_icons/female_buff.dmi',
+					"male_child" = 'icons/mob/human_icons/male_child.dmi',"female_child" = 'icons/mob/human_icons/female_child.dmi')
 
 	var/invis_sight = SEE_INVISIBLE_LIVING
 	var/darksight = 2
@@ -100,8 +105,20 @@
 	if(!limbs_id)	//if we havent set a limbs id to use, just use our own id
 		limbs_id = id
 	..()
-
-
+/*
+/datum/species/proc/Choose_Iconfile(mob/living/carbon/human/H) //FEMALE ICONS
+	var/F = null
+	var/icon/I
+	if(H.IsFemale())
+		F = "female"
+	else
+		F = "male"
+	if(F in icons)
+		I = F
+	else
+		I = "male"
+	return I
+*/
 /datum/species/proc/random_name(gender,unique,lastname)
 	if(unique)
 		return random_unique_name(gender)
@@ -287,7 +304,7 @@
 	if(H.undershirt)
 		var/datum/sprite_accessory/undershirt/U2 = undershirt_list[H.undershirt]
 		if(U2)
-			if(H.dna.species.sexes && H.gender == FEMALE)
+			if(H.IsFemale()) //if(H.dna.species.sexes && H.gender == FEMALE)
 				standing	+=	wear_female_version("[U2.icon_state]_s", U2.icon, BODY_LAYER)
 			else
 				standing	+= image("icon"=U2.icon, "icon_state"="[U2.icon_state]_s", "layer"=-BODY_LAYER)

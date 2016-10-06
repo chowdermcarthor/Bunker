@@ -37,8 +37,8 @@
 
 	var/tinttotal = 0	// Total level of visualy impairing items
 
-	var/list/bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
-					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
+	var/list/bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/groin, /obj/item/bodypart/head, /obj/item/bodypart/l_arm, /obj/item/bodypart/r_foot, /obj/item/bodypart/l_foot,
+					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg, /obj/item/bodypart/l_hand, /obj/item/bodypart/r_hand)
 	//Gets filled up in create_bodyparts()
 
 	var/list/hand_bodyparts = list() //a collection of arms (or actually whatever the fug /bodyparts you monsters use to wreck my systems)
