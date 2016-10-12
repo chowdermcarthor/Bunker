@@ -4,6 +4,8 @@
 			return back
 		if(slot_wear_mask)
 			return wear_mask
+		if(slot_neck)
+			return wear_neck
 		if(slot_head)
 			return head
 		if(slot_handcuffed)
@@ -46,6 +48,8 @@
 		if(slot_wear_mask)
 			wear_mask = I
 			wear_mask_update(I, toggle_off = 0)
+		if(slot_neck)
+			wear_neck = I
 		if(slot_head)
 			head = I
 			head_update(I)

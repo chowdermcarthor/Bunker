@@ -103,6 +103,13 @@
 		else
 			msg += "[t_He] [t_has] \icon[wear_mask] \a [wear_mask] on [t_his] face.\n"
 
+	//neck
+	if(wear_neck && !(slot_neck in obscured))
+		if(wear_neck.blood_DNA)
+			msg += "<span class='warning'>[t_He] [t_has] \icon[wear_neck] [wear_neck.gender==PLURAL?"some":"a"] blood-stained [wear_neck.name] on [t_his] face!</span>\n"
+		else
+			msg += "[t_He] [t_has] \icon[wear_neck] \a [wear_neck] on [t_his] face.\n"
+
 	//eyes
 	if(glasses && !(slot_glasses in obscured))
 		if(glasses.blood_DNA)

@@ -50,6 +50,15 @@
 	static_inventory += inv_box
 
 	inv_box = new /obj/screen/inventory()
+	inv_box.name = "neck"
+	inv_box.icon = ui_style
+	inv_box.icon_state = "neck"
+//	inv_box.icon_full = "template"
+	inv_box.screen_loc = ui_neck
+	inv_box.slot_id = slot_neck
+	toggleable_inventory += inv_box
+
+	inv_box = new /obj/screen/inventory()
 	inv_box.name = "head"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "head"
